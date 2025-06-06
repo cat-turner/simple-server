@@ -14,27 +14,27 @@ examples and explanations.
 Basic usage
 -----------
 
-You can install the package using `pip` and then run the main script from the command line as
-`helloworld_in_python` or import it in python via `import helloworld`:
+To start the server using Docker, run the following commands:
 
 ```shell
-$ cd python-helloworld/  # Dir containing this repo's root
-$ pip install .
-$ helloworld_in_python
-Hello, world
-$ helloworld_in_python --version
-helloworld 0.1
-$ python
->>> import helloworld
->>> helloworld.__version__
-'0.1'
+$ docker build -t simple-server .
+$ docker run -p 8000:8000 simple-server
 ```
 
-You can also try it without installing by running `python helloworld.py` in the repository root:
+The server will be available at http://localhost:8000
+
+Submitting to ShapesWorld
+------------------------
+
+To submit to ShapesWorld, you need to create a zip file containing your project files. Use the following command to create a flat zip file (without creating a subdirectory):
 
 ```shell
-$ python helloworld.py
-Hello, world
-$ python helloworld.py --version
-helloworld 0.1
+$ zip -r submission.zip . -x ".*" -x "__pycache__/*" -x "*.pyc"
 ```
+
+This command:
+- Creates a zip file named `submission.zip`
+- Includes all files in the current directory (`.`)
+- Excludes hidden files and directories (`-x ".*"`)
+- Excludes Python cache files (`-x "__pycache__/*" -x "*.pyc"`)
+- Creates a flat structure (files appear at the root of the zip, not in a subdirectory)
